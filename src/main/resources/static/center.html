@@ -1,0 +1,34 @@
+<script>
+    var datagrid;
+    $(function () {
+       datagrid = $('#datagrid').datagrid({
+           url:'/userController/list',
+           title:'title',
+           iconCls:'icon-save',
+           pagination:true, //分页
+           pageSize:10,
+           pageList:[10,50,100],
+           fit:true,
+           fitColumns:true,  //横向滚动条
+           nowrap:true, //换行
+           idField:'id',
+           columns:[[
+               {title:'编号',field:'id',width:100},
+               {title:'姓名',field:'name',width:100},
+               {title:'密码',field:'password',width:100},
+               {title:'创建时间',field:'createTime',width:100},
+               {title:'更新时间',field:'updateTime',width:100}
+           ]]
+
+       })
+    });
+</script>
+
+<div class="easyui-tabs" fit="true">
+    <!--fit 自适应大小-->
+    <div title="用户管理" border="false">
+        <table id="datagrid">
+
+        </table>
+        用户管理</div>
+</div>

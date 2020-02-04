@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--1 jquery 2 easyui 3 easyui css 4 icon 5 cn-->
+    <script src="../static/js/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script src="../static/js/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="../static/js/jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" href="../static/js/jquery-easyui-1.7.0/themes/icon.css">
+    <script src="../static/js/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+
+
+    <script>
+        $(function () { //除去图片 已经执行了
+            console.info($("#d2")); //比alert强大
+            $("#d2").dialog({
+                modal:true
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="dd" modal="true" title="dialog1" class="easyui-dialog" style="width: 600px;height: 300px">content1</div>
+    <!--<div id="d2" style="width: 400px;height: 300px">content2</div>-->
+
+    <div id="p" class="easyui-panel" title="My Panel"
+         style="width:500px;height:150px;padding:10px;background:#fafafa;"
+         data-options="iconCls:'icon-save',closable:true,
+    collapsible:true,minimizable:true,maximizable:true">
+        <p>panel content.</p>
+        <p>panel content.</p>
+    </div>
+
+    <input type="button" value="open" onclick="$('#p').panel('open')">
+    <!--这个close隐藏-->
+    <input type="button" value="close" onclick="$('#p').panel('close')">
+    <input type="button" value="destroy" onclick="$('#p').panel('destroy')">
+</body>
+</html>

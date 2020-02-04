@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <script src="js/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script src="js/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="js/jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" href="js/jquery-easyui-1.7.0/themes/icon.css">
+    <script src="js/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+
+    <script>
+        var cc;
+        $(function () {
+            cc =  $("#blayout").layout();//初始化
+
+            cc.layout('collapse','west');//折叠西部
+
+            var centerLayout = $('#blayout').layout('panel','center');
+            console.info(centerLayout.panel('options'));
+        });
+    </script>
+</head>
+<body id="blayout">
+<div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+<div data-options="region:'south',title:'South Title',split:true" style="height:100px;">
+    <input value="展开西部" type="button" onclick="cc.layout('expand','west')">
+</div>
+<div data-options="region:'east',title:'East',split:true" style="width:100px;"></div>
+<div data-options="region:'west',title:'West',split:true" style="width:100px;"></div>
+<div data-options="region:'center',href:'center.html',iconCls:'icon-save',title:'center title'"
+     style="background:#eee;"></div>
+</body>
+</html>
