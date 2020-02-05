@@ -3,7 +3,7 @@
     $(function () {
        datagrid = $('#datagrid').datagrid({
            url:'/userController/list',
-           title:'title',
+           title:'用户列表',
            iconCls:'icon-save',
            pagination:true, //分页
            pageSize:10,
@@ -12,13 +12,29 @@
            fitColumns:true,  //横向滚动条
            nowrap:true, //换行
            idField:'id',
+           sortName:'name',
+           sortOrder:'desc',
            columns:[[
                {title:'编号',field:'id',width:100},
-               {title:'姓名',field:'name',width:100},
+               {title:'姓名',field:'name',width:100,sortable:true},
                {title:'密码',field:'password',width:100},
                {title:'创建时间',field:'createTime',width:100},
                {title:'更新时间',field:'updateTime',width:100}
-           ]]
+           ]],
+           toolbar:[
+           {text:'增加',iconCls:'icon-add',handler:function(){
+
+           }},
+            {text:'删除',iconCls:'icon-remove',handler:function(){
+
+           }},
+            {text:'修改',iconCls:'icon-edit',handler:function(){
+
+           }},
+            {text:'查询',iconCls:'icon-search',handler:function(){
+
+           }}
+           ]
 
        })
     });

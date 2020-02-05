@@ -2,7 +2,7 @@ package com.easyui.pojo;
 
 import java.time.LocalDate;
 
-public class User {
+public class User extends Page{
     private String id;
     private String name;
     private String password;
