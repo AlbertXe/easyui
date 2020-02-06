@@ -23,13 +23,13 @@ public class UserController {
         System.out.println("sort:"+user.getSort());
         System.out.println("order:"+user.getOrder());
         String orderBy = "order by " + user.getSort() + " " + user.getOrder();
-        List<User> users = userDao.getUsersOrderBy(start,user.getRows(),orderBy);
-//        List<User> users = userDao.getUsers();
+//        List<User> users = userDao.getUsersOrderBy(start,user.getRows(),orderBy);
+        List<User> users = userDao.getUserByExample(user);
         System.out.println(users.size());
 
         Map<String,Object> map = new HashMap<>();
         //easyui 需要返回 total 和 total
-        map.put("total", userDao.getUsers().size());
+        map.put("total", 100);
         map.put("rows", users);
         return map;
     }

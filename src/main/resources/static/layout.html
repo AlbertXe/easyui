@@ -12,17 +12,18 @@
     <script>
         var cc;
         $(function () {
-            cc =  $("#blayout").layout();//初始化
+            cc = $("#blayout").layout();//初始化
 
-            cc.layout('collapse','west');//折叠西部
+            cc.layout('collapse', 'west');//折叠西部
 
-            var centerLayout = $('#blayout').layout('panel','center');
+            var centerLayout = $('#blayout').layout('panel', 'center');
             console.info(centerLayout.panel('options'));
         });
     </script>
 </head>
 <body id="blayout">
-<div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>
+<div data-options="region:'north',href:'north.html',title:'过滤',split:true" style="height:150px">
+</div>
 <div data-options="region:'south',title:'South Title',split:true" style="height:100px;">
     <input value="展开西部" type="button" onclick="cc.layout('expand','west')">
 </div>

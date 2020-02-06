@@ -8,9 +8,11 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 @Component
 public interface UserDao {
-    @Select("select * from user")
-    List<User> getUsers();
-    @Select("select * from user ${orderBy} limit #{start},#{pageSize}")
-    List<User> getUsersOrderBy(@Param("start")int start,@Param("pageSize")int pageSize,@Param("orderBy") String orderBy);
+//    @Select("select * from user")
+//    List<User> getUsers();
+//    @Select("select * from user ${orderBy} limit #{start},#{pageSize}")
+//    List<User> getUsersOrderBy(@Param("start")int start,@Param("pageSize")int pageSize,@Param("orderBy") String orderBy);
+
+    List<User> getUserByExample(User user);
 
 }
