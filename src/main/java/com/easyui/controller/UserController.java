@@ -20,6 +20,7 @@ public class UserController {
     @ResponseBody
     public Map<String, Object> listUser(User user) {
         int start = (user.getPage() -1)* user.getRows();
+        user.setStart(start);
         System.out.println("sort:"+user.getSort());
         System.out.println("order:"+user.getOrder());
         String orderBy = "order by " + user.getSort() + " " + user.getOrder();
@@ -29,7 +30,9 @@ public class UserController {
 
         Map<String,Object> map = new HashMap<>();
         //easyui 需要返回 total 和 total
-        map.put("total", 100);
+        Integer count = userDao.getCountByExample(user);
+        System.out.println("count=" + count);
+        map.put("total", count);
         map.put("rows", users);
         return map;
     }

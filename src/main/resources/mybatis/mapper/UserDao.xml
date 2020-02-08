@@ -16,6 +16,15 @@
       <where>
           <if test="name != null">and name like '%${name}%'</if>
       </where>
+        order by ${sort} ${order}
+        limit ${start},${rows}
 
+    </select>
+
+    <select id="getCountByExample" parameterType="com.easyui.pojo.User" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="name != null">and name like '%${name}%'</if>
+        </where>
     </select>
 </mapper>

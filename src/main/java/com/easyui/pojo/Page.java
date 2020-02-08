@@ -14,6 +14,8 @@ public class Page {
      * 每页条数
      */
     private int rows;
+
+    private int start;
     /**
      * 升或降
      */
@@ -53,5 +55,13 @@ public class Page {
 
     public void setSort(String sort) {
         this.sort = sort;
+    }
+
+    public int getStart() {
+        return start;
+    }
+
+    public void setStart(int start) {
+        this.start = start;
     }
 }
