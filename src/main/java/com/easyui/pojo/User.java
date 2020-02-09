@@ -1,12 +1,16 @@
 package com.easyui.pojo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class User extends Page{
     private String id;
     private String name;
     private String password;
+    @DateTimeFormat
     private LocalDate updateTime;
+    @DateTimeFormat
     private LocalDate createTime;
 
     public String getName() {

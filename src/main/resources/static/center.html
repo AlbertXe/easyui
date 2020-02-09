@@ -77,6 +77,7 @@
                 }, {
                     text: '保存', iconCls: 'icon-save', handler: function () {
                         datagrid.datagrid('endEdit', editRow);
+
                     }
                 },
                 {
@@ -87,6 +88,27 @@
             ],
             onAfterEdit: function (rowIndex, rowData, changes) {
                 console.info(rowData);
+                //区分增加还是更新
+                var inserted = datagrid.datagrid('getChanges', 'inserted');
+                var updated = datagrid.datagrid('getChanges', 'updated');
+                console.info("inserted=" + inserted + ",updated=" + updated);
+                var url;
+                if (inserted.length > 0) {
+                    url = '/insertUser';
+                }
+                if (updated.length > 0) {
+                    url = '/updateUser';
+                }
+
+                $.ajax({
+                    url: url,
+                    data: rowData,
+                    dataType: 'json',
+                    success: function (a) {
+                        datagrid.datagrid('acceptChanges')
+                        $.messager.show(a);
+                    }
+                });
             },
             onDblClickRow: function (rowIndex, rowData) {//双击 编辑状态
                 datagrid.datagrid('beginEdit', rowIndex);

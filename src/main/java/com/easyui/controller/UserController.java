@@ -37,5 +37,11 @@ public class UserController {
         return map;
     }
 
+    @RequestMapping("/insertUser")
+    public void insertUser(User user) {
+        userDao.insert(user);
+
+    }
+
 
 }

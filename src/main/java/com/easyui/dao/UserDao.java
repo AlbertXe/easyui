@@ -1,6 +1,7 @@
 package com.easyui.dao;
 
 import com.easyui.pojo.User;
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,4 +16,6 @@ public interface UserDao {
 
     Integer getCountByExample(User user);
 
+    @Insert("insert into user values(${id},${name},${password},${createTime),${updateTime}")
+    void insert(User user);
 }
