@@ -16,6 +16,7 @@ public interface UserDao {
 
     Integer getCountByExample(User user);
 
-    @Insert("insert into user values(${id},${name},${password},${createTime),${updateTime}")
+    //    @Insert("insert into user (`id`, `name`, `password`, `update_time`, `create_time`) values( ${id},${name},${password},${createTime),${updateTime})")
+    @Insert("INSERT INTO `study`.`user`(`id`, `name`, `password`, `update_time`, `create_time`) VALUES (#{id}, #{name}, #{password}, #{createTime}, #{updateTime});")
     void insert(User user);
 }

@@ -39,6 +39,7 @@ public class UserController {
 
     @RequestMapping("/insertUser")
     public void insertUser(User user) {
+        System.out.println("user=" + user);
         userDao.insert(user);
 
     }
