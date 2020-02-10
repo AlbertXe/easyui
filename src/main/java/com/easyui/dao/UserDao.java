@@ -1,6 +1,7 @@
 package com.easyui.dao;
 
 import com.easyui.pojo.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.stereotype.Component;
 
@@ -19,4 +20,7 @@ public interface UserDao {
     //    @Insert("insert into user (`id`, `name`, `password`, `update_time`, `create_time`) values( ${id},${name},${password},${createTime),${updateTime})")
     @Insert("INSERT INTO `study`.`user`(`id`, `name`, `password`, `update_time`, `create_time`) VALUES (#{id}, #{name}, #{password}, #{createTime}, #{updateTime});")
     void insert(User user);
+
+    @Delete("delete from user where id = #{id}")
+    void deleteUser(String id);
 }

@@ -44,7 +44,7 @@
                         datagrid.datagrid('insertRow', {
                             index: 0,
                             row: {
-                                id: 98777,
+                                id: Date.now().toString(11),
                                 name: 'new name'
                             }
                         });
@@ -61,11 +61,24 @@
                                     for (var i = 0; i < rows.length; i++) {
                                         ids.push(rows[i].id);
                                     }
-                                    console.info(ids.join(','))
+                                    console.info(ids.join(','));
+
+                                    $.ajax({
+                                        url: '/deleteUser',
+                                        data: {ids: ids.join(',')},
+                                        dataType: 'json',
+                                        success: function (data) {
+                                            alert(data);
+                                            $.messager.alert('提示', '成功删除');
+                                            $.messager.show(data);
+                                            console.info(data);
+                                            datagrid.datagrid('load', {});
+                                        }
+                                    })
                                 }
                             })
                         } else {
-                            $.messager('提示', '请至少选择一条数据', 'error');
+                            $.messager.alert('提示', '请至少选择一条数据', 'error');
                         }
 
                     }},
@@ -110,8 +123,8 @@
                     data: rowData,
                     dataType: 'json',
                     success: function (a) {
-                        datagrid.datagrid('acceptChanges')
-                        $.messager.show(a);
+                        datagrid.datagrid('acceptChanges');
+                        $.messager.show('提示', a);
                     }
                 });
             },

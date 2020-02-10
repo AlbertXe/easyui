@@ -1,3 +1,4 @@
+
 $.extend($.fn.datagrid.defaults.editors, {
     datetimebox: {
         init: function (container, options) {
@@ -20,3 +21,7 @@ $.extend($.fn.datagrid.defaults.editors, {
         }
     }
 });
+
+function getId(length) {
+    return Number(Math.random().toString(length));
+}

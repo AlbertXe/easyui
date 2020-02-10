@@ -38,9 +38,23 @@ public class UserController {
     }
 
     @RequestMapping("/insertUser")
-    public void insertUser(User user) {
+    @ResponseBody
+    public String insertUser(User user) {
         System.out.println("user=" + user);
         userDao.insert(user);
+        return "新增成功";
+
+    }
+
+    @RequestMapping("/deleteUser")
+    @ResponseBody
+    public String deleteUser(String ids) {
+        System.out.println("ids =" + ids);
+        String[] idd = ids.split(",");
+        for (int i = 0; i < idd.length; i++) {
+            userDao.deleteUser(idd[i]);
+        }
+        return "删除成功";
 
     }
 
