@@ -11,12 +11,13 @@
             pageSize:10,
             pageList:[10,50,100],
             fit:true,
-            fitColumns:true,  //横向滚动条
+            fitColumns: false,  //横向滚动条
             nowrap:true, //换行
             idField:'id',
             sortName:'name',
             sortOrder:'desc',
-            columns:[[
+            frozenColumns: [[
+                //冻结列 不出现滚动条的列
                 {title: '编号', field: 'id', width: 100, checkbox: true},
                 {
                     title: '姓名',
@@ -24,8 +25,14 @@
                     width: 100,
                     sortable: true,
                     editor: {type: 'validatebox', options: {required: true}}
+                },]],
+            columns:
+                [[{
+                    title: '密码',
+                    field: 'password',
+                    width: 100,
+                    editor: {type: 'validatebox', options: {required: true}}
                 },
-                {title: '密码', field: 'password', width: 100, editor: {type: 'validatebox', options: {required: true}}},
                 {
                     title: '创建时间',
                     field: 'createTime',
@@ -41,16 +48,7 @@
             ]],
             toolbar:[
                 {text:'增加',iconCls:'icon-add',handler:function(){
-                        datagrid.datagrid('insertRow', {
-                            index: 0,
-                            row: {
-                                id: Date.now().toString(11),
-                                name: 'new name'
-                            }
-                        });
-                        // var count = datagrid.datagrid('getRows').length;
-                        // console.info(count);
-                        datagrid.datagrid('beginEdit', 0);
+                        add();
                     }},
                 {text:'删除',iconCls:'icon-remove',handler:function(){
                         var rows = datagrid.datagrid('getSelections');
@@ -131,10 +129,33 @@
             onDblClickRow: function (rowIndex, rowData) {//双击 编辑状态
                 datagrid.datagrid('beginEdit', rowIndex);
                 editRow = rowIndex;
+            },
+            onRowContextMenu: function (e, rowIndex, rowData) {
+                e.preventDefault();//组织浏览器右击
+
+                $(this).datagrid('unselectAll');
+                $(this).datagrid('selectRow', rowIndex);
+                $('#menu').menu('show', {
+                    left: e.pageX,
+                    top: e.pageY
+                })
             }
 
         })
     });
+
+    function add() {
+        datagrid.datagrid('insertRow', {
+            index: 0,
+            row: {
+                id: Date.now().toString(11),
+                name: 'new name'
+            }
+        });
+        // var count = datagrid.datagrid('getRows').length;
+        // console.info(count);
+        datagrid.datagrid('beginEdit', 0);
+    }
 </script>
 
 <div class="easyui-tabs" fit="true">
@@ -144,4 +165,10 @@
 
         </table>
         用户管理</div>
+
+    <div id="menu" class="easyui-menu" style="width:120px;display: none">
+        <div onclick="add()" iconCls="icon-add">增加</div>
+        <div onclick="" iconCls="icon-remove">删除</div>
+        <div onclick="" iconCls="icon-edit">编辑</div>
+    </div>
 </div>
