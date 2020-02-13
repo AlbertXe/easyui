@@ -31,7 +31,10 @@
                     title: '密码',
                     field: 'password',
                     width: 100,
-                    editor: {type: 'validatebox', options: {required: true}}
+                    editor: {type: 'validatebox', options: {required: true}},
+                    formatter: function (value, rowData) {
+                        return "******";
+                    }
                 },
                 {
                     title: '创建时间',
@@ -44,7 +47,15 @@
                     field: 'updateTime',
                     width: 100,
                     editor: {type: 'datetimebox', options: {required: true}}
-                }
+                },
+                    {
+                        title: '编辑',
+                        field: 'edit',
+                        width: 100,
+                        formatter: function (value, rowData) {
+                            return '<button>增加</button><button>删除</button>'
+                        }
+                    }
             ]],
             toolbar:[
                 {text:'增加',iconCls:'icon-add',handler:function(){
