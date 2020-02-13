@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tree</title>
+    <script src="js/jquery-easyui-1.7.0/jquery.min.js"></script>
+    <script src="js/jquery-easyui-1.7.0/jquery.easyui.min.js"></script>
+    <link rel="stylesheet" href="js/jquery-easyui-1.7.0/themes/default/easyui.css">
+    <link rel="stylesheet" href="js/jquery-easyui-1.7.0/themes/icon.css">
+    <script src="js/jquery-easyui-1.7.0/locale/easyui-lang-zh_CN.js"></script>
+
+    <script>
+        $(function () {
+            $('#tt2').tree({
+                url: 'tree_data.json',
+                method: 'GET'
+            });
+        })
+    </script>
+</head>
+<body>
+<ul id="tt" class="easyui-tree" lines="true">
+    <li>
+        <span>Folder</span>
+        <ul>
+            <li>
+                <span>Sub Folder 1</span>
+                <ul>
+                    <li><span><a href="#">File 11</a></span></li>
+                    <li><span>File 12</span></li>
+                    <li><span>File 13</span></li>
+                </ul>
+            </li>
+            <li><span>File 2</span></li>
+            <li><span>File 3</span></li>
+        </ul>
+    </li>
+    <li><span>File21</span></li>
+</ul>
+第二个
+<ul id="tt2"></ul>
+<ul id="tt3"></ul>
+</body>
+</html>
