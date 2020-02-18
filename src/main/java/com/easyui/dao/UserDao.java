@@ -21,6 +21,8 @@ public interface UserDao {
     @Insert("INSERT INTO `study`.`user`(`id`, `name`, `password`, `update_time`, `create_time`) VALUES (#{id}, #{name}, #{password}, #{createTime}, #{updateTime});")
     void insert(User user);
 
+    List<String> selName();
+
     @Delete("delete from user where id = #{id}")
     void deleteUser(String id);
 }

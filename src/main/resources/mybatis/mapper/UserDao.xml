@@ -27,4 +27,8 @@
             <if test="name != null">and name like '%${name}%'</if>
         </where>
     </select>
+
+    <select id="selName" resultType="String">
+        select name from user
+    </select>
 </mapper>
